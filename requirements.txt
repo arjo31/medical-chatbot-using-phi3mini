@@ -7,3 +7,7 @@ sentence-transformers
 langchain
 ipykernel
 python-dotenv
+pypdf
+langchain_pinecone
+pinecone
+faiss-cpu
