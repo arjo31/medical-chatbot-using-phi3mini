@@ -9,5 +9,6 @@ ipykernel
 python-dotenv
 pypdf
 langchain_pinecone
-pinecone
+pinecone-client
 faiss-cpu
+-e .

@@ -1,0 +1,1 @@
+model_path = r"C:\Users\Arjo\.ollama\models\blobs\sha256-8934d96d3f08982e95922b2b7a2c626a1fe873d7c3b06e8e56d7bc0a1fef9246"
