@@ -6,3 +6,4 @@ ctransformers
 sentence-transformers
 langchain
 ipykernel
+python-dotenv
