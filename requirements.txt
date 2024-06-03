@@ -1,0 +1,8 @@
+langchain_core
+langchain_community
+streamlit
+flask
+ctransformers
+sentence-transformers
+langchain
+ipykernel
