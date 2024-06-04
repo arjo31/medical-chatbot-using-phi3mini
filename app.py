@@ -1,11 +1,9 @@
 import os
-
 import streamlit as st
 from dotenv import load_dotenv
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 from langchain_community.llms import Ollama
-
 from src.helper import *
 from src.model_path import *
 from src.prompt import *
