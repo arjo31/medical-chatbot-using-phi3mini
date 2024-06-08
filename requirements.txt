@@ -1,14 +1,11 @@
 langchain_core
 langchain_community
 streamlit
-flask
 ctransformers
 sentence-transformers
 langchain
 ipykernel
 python-dotenv
 pypdf
-langchain_pinecone
-pinecone-client
 faiss-cpu
 -e .

@@ -10,19 +10,27 @@ from src.prompt import *
 
 load_dotenv()
 
-data_path = r"D:\My_Coding_Files\medical-chatbot-using-llama2\data"
-vector_store_path = r"D:\My_Coding_Files\medical-chatbot-using-llama2\faiss_db"
+data_path = r"data"
+vector_store_path = r"faiss_db"
 
-embeddings = hugging_face_embedding_model()
+@st.cache_resource(show_spinner=False)
+def load_embedding_model():
+    return hugging_face_embedding_model()
 
-if os.path.exists(vector_store_path):
-    vector_db = load_db(path=vector_store_path, embedding=embeddings)
-else:
-    document = load_pdf(data_path=data_path)
-    doc_chunks = text_splitter(documents=document)
-    vector_db = vector_store(text_chunks=doc_chunks, embedding=embeddings)
-    save_db(vector_db=vector_db, path=vector_store_path)
+embeddings = load_embedding_model()
 
+@st.cache_resource(show_spinner=False)
+def load_and_store_data():
+    if os.path.exists(vector_store_path):
+        vector_db = load_db(path=vector_store_path, embedding=embeddings)
+    else:
+        document = load_pdf(data_path=data_path)
+        doc_chunks = text_splitter(documents=document)
+        vector_db = vector_store(text_chunks=doc_chunks, embedding=embeddings)
+        save_db(vector_db=vector_db, path=vector_store_path)
+    return vector_db
+
+vector_db = load_and_store_data()
 model_path = model_path
 prompt = PromptTemplate(
     template=prompt_template, input_variables=["context", "question"]
@@ -44,16 +52,6 @@ qa = RetrievalQA.from_chain_type(
     return_source_documents=True,
     retriever=vector_db.as_retriever(search_kwargs={"k": 2}),
 )
-
-# col1, col2 = st.columns([4, 1])
-
-# col1.title('Medical Chatbot')
-
-# if "chat_history" not in st.session_state:
-#     st.session_state.chat_history = []
-
-# if col2.button('Clear Chat'):
-#     st.session_state.chat_history = []
 
 col1, col2 = st.columns([4, 1])
 
@@ -92,9 +90,7 @@ for message in st.session_state.chat_history:
     with st.chat_message(message['role']):
         st.write(message['content'])
 
-user_input = st.chat_input("Ask any Question!")
-
-if user_input:
+if user_input:= st.chat_input("Ask any Question!"):
     add_message('user', user_input)
     with st.chat_message('user'):
         st.write(user_input)

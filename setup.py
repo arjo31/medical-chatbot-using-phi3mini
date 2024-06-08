@@ -14,7 +14,7 @@ def get_requirements(file_path:str) -> List[str]:
 
 setup(
     name='Medical chatbot using Gen AI',
-    version='1.0.0',
+    version='2.0.0',
     author='Arjo Kundu',
     author_email='arjo3103@gmail.com',
     packages=find_packages(),
