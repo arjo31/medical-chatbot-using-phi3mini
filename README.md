@@ -42,7 +42,7 @@ An end to end Medical Chatbot Using Microsoft's Phi3 Mini model downloaded from 
    ```bash
    pip install -r requirements.txt
    ```
-7. Create a Langsmith API Key from this [link][https://smith.langchain.com] and get the Langsmith Project Name after creating a new project, to track how the responses are being managed and the time taken by the model to give the response. Store all important files in a .env file.
+7. Create a Langsmith API Key from this [link](https://smith.langchain.com) and get the Langsmith Project Name after creating a new project, to track how the responses are being managed and the time taken by the model to give the response. Store all important files in a .env file.
 8. Run the following command to run the Streamlit App
    ```bash
    streamlit run app.py
