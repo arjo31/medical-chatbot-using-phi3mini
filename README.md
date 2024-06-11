@@ -17,6 +17,7 @@ The chatbot answers queries based on the 5 volumes of Gale's Encyclopedia of Med
 
 ## Steps to run : 
 1. For Windows : Download Ollama from this [link](https://ollama.com/).
+   
    For Linux : Run this command in the terminal :
    ```bash
    curl -fsSL https://ollama.com/install.sh | sh
