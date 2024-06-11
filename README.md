@@ -1,4 +1,4 @@
-# Medical Chatbot using Microsoft's Phi3 mini model from Ollama
+# Medical Chatbot using Microsoft's Phi3 Mini model
 
 ## Description : 
 An end to end Medical Chatbot Using Microsoft's Phi3 Mini model downloaded from Ollama. The chatbot uses RAG and RetreivalQA to answer queries based on the 5 volumes of Gale's Encyclopedia of medicines. We also use the All MiniLM L6 model as the word embedding layer from HuggingFace. Currently, the app can be run locally on your host computer. Looking for ways to deploy it.
@@ -49,4 +49,4 @@ The chatbot answers queries based on the 5 volumes of Gale's Encyclopedia of Med
    streamlit run app.py
    ```
 
-   The app will now run in your local machine. 
+   The app will now run in your local machine. Please feel free to test it out and suggest any changes.
