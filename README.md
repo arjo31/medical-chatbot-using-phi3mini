@@ -13,8 +13,6 @@ An end to end Medical Chatbot Using Microsoft's Phi3 Mini model downloaded from 
 7. All MiniLM L6 model as a sentence transformer.
 8. HuggingFace
 
-The chatbot answers queries based on the 5 volumes of Gale's Encyclopedia of Medicine (2nd Edition).
-
 ## Steps to run : 
 1. For Windows : Download Ollama from this [link](https://ollama.com/).
    
