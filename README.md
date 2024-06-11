@@ -14,5 +14,5 @@ An end to end Medical Chatbot Using Microsoft's Phi3 Mini model downloaded from 
 The chatbot answers queries based on the 5 volumes of Gale's Encyclopedia of Medicine (2nd Edition).
 
 ## Steps to run : 
-1. Download Ollama from this [link](#https://ollama.com/)
+1. Download Ollama from this [link](https://ollama.com/)
 2. 
