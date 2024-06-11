@@ -8,4 +8,5 @@ ipykernel
 python-dotenv
 pypdf
 faiss-cpu
+langchain_huggingface
 -e .

@@ -15,20 +15,27 @@ vector_store_path = r"faiss_db"
 
 @st.cache_resource(show_spinner=False)
 def load_embedding_model():
-    return hugging_face_embedding_model()
+    try:
+        return hugging_face_embedding_model()
+    except:
+        st.error("Embedding Model Not Loaded Properly")
+        
 
 embeddings = load_embedding_model()
 
 @st.cache_resource(show_spinner=False)
 def load_and_store_data():
-    if os.path.exists(vector_store_path):
-        vector_db = load_db(path=vector_store_path, embedding=embeddings)
-    else:
-        document = load_pdf(data_path=data_path)
-        doc_chunks = text_splitter(documents=document)
-        vector_db = vector_store(text_chunks=doc_chunks, embedding=embeddings)
-        save_db(vector_db=vector_db, path=vector_store_path)
-    return vector_db
+    try:
+        if os.path.exists(vector_store_path):
+            vector_db = load_db(path=vector_store_path, embedding=embeddings)
+        else:
+            document = load_pdf(data_path=data_path)
+            doc_chunks = text_splitter(documents=document)
+            vector_db = vector_store(text_chunks=doc_chunks, embedding=embeddings)
+            save_db(vector_db=vector_db, path=vector_store_path)
+        return vector_db
+    except:
+        st.error('Vector Database Not Loaded Properly')
 
 vector_db = load_and_store_data()
 model_path = model_path
@@ -39,7 +46,7 @@ chain_type_kwargs = {"prompt": prompt}
 
 llm = Ollama(
     model="phi3:mini",
-    temperature=0.8,
+    temperature=0.9,
     num_predict=1024,
     top_k=90,
     top_p=0.95,
@@ -56,7 +63,7 @@ qa = RetrievalQA.from_chain_type(
 col1, col2 = st.columns([4, 1])
 
 with col1:
-    st.header('Medical Chatbot')
+    st.header('AskGale')
 
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = [{'role':'ai', 'content':'Hello! How may I assist you today?'}]
@@ -95,7 +102,7 @@ if user_input:= st.chat_input("Ask any Question!"):
     with st.chat_message('user'):
         st.write(user_input)
     if vector_db:
-        response = qa({'query' : user_input})
+        response = qa.invoke({'query' : user_input})
         ans = response['result']
         add_message('ai', ans)
         with st.chat_message('ai'):

@@ -5,6 +5,7 @@ prompt_template = """
     Context: {context}
     Question: {question}
     Only return the helpful answer below and nothing else.
-    At the end of each answer which you know, don't end it with any statement thanking the user for asking you question.
+    At the end of each answer which you know, don't end it with any statement thanking the user for asking you the question. Just end your answer normally without thanking the user. Just anser what is necessary. No thank you to the user is needed
     If the user tells "Thank you", or anything related to it, then reply in short, thanking the user to ask questions to you and telling him to consult you again in the future in case of any help.
+    Assistant : 
     """
